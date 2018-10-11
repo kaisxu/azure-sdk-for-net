@@ -182,6 +182,46 @@ namespace Microsoft.AzureStack.Management.Backup.Admin
             }
 
             /// <summary>
+            /// Clear a specific location settings.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group.
+            /// </param>
+            /// <param name='location'>
+            /// Name of the backup location.
+            /// </param>
+            public static BackupLocation ClearBackupLocation(this IBackupLocationsOperations operations, string resourceGroupName, string location)
+            {
+                return operations.ClearBackupLocationAsync(resourceGroupName, location).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Clear a specific location settings.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group.
+            /// </param>
+            /// <param name='location'>
+            /// Name of the backup location.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<BackupLocation> ClearBackupLocationAsync(this IBackupLocationsOperations operations, string resourceGroupName, string location, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ClearBackupLocationWithHttpMessagesAsync(resourceGroupName, location, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Update a backup location.
             /// </summary>
             /// <param name='operations'>
@@ -262,6 +302,46 @@ namespace Microsoft.AzureStack.Management.Backup.Admin
             public static async Task<Backup> BeginCreateBackupAsync(this IBackupLocationsOperations operations, string resourceGroupName, string location, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.BeginCreateBackupWithHttpMessagesAsync(resourceGroupName, location, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Clear a specific location settings.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group.
+            /// </param>
+            /// <param name='location'>
+            /// Name of the backup location.
+            /// </param>
+            public static BackupLocation BeginClearBackupLocation(this IBackupLocationsOperations operations, string resourceGroupName, string location)
+            {
+                return operations.BeginClearBackupLocationAsync(resourceGroupName, location).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Clear a specific location settings.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// Name of the resource group.
+            /// </param>
+            /// <param name='location'>
+            /// Name of the backup location.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<BackupLocation> BeginClearBackupLocationAsync(this IBackupLocationsOperations operations, string resourceGroupName, string location, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginClearBackupLocationWithHttpMessagesAsync(resourceGroupName, location, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
